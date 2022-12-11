@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { Header, SectionLoading, SectionStatistic, SectionWeather } from './components';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { getWeather } from './store/weatherSlice/weatherSlice';
+import "./styles/app.scss";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App: React.FC = () => {
+    const dispatch = useAppDispatch();
+    const { mode } = useAppSelector(state => state.mode);
+    const { weather, loading } = useAppSelector(state => state.weather);
+    const dataCity = useAppSelector(state => state.city);
+
+    console.log(weather);
+    
+    
+    useEffect(() => {
+        if (dataCity) {
+            dispatch(getWeather(dataCity));
+        }
+    }, [dispatch, dataCity]);
+
+    useEffect(() => {
+        if (mode) {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+        } else {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+        }
+    }, [mode]);
+
+    useEffect(() => {
+        localStorage.setItem("mode", `${mode}`)
+        return () => {
+            localStorage.setItem("mode", `${mode}`)
+        }
+    }, [mode]);
+
+    if(loading === "pending") return <SectionLoading />
+    
+    return (
+        <div className="app">
+            <Header />
+            <SectionWeather />
+            <SectionStatistic />
+        </div>
+    )
 }
 
 export default App;

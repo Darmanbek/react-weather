@@ -1,0 +1,18 @@
+.header
+{
+    padding: 10px 0;
+
+    .header-inner
+    {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .header-content
+        {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+    }
+}

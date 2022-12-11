@@ -1,0 +1,139 @@
+.header-toggle_button
+{
+    width: 35px;
+    height: 35px;
+
+    button
+    {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+}
+
+.header-select_city
+{
+    display: block;
+    position: relative;
+
+    button
+    {
+        padding: 10px 20px;
+        border-radius: 10px;
+        min-width: 200px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+        align-items: center;
+
+        .icon
+        {
+            font-size: 11px;
+            height: 100%;
+            transition: transform .2s;
+
+            &.active
+            {
+                transform: rotate(180deg);
+            }
+        }
+
+        span
+        {
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .city-items
+    {
+
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        margin-top: 5px;
+        overflow: auto;
+        z-index: 2;
+        
+        position: absolute;
+        transition: transform .3s;
+        // transform: scaleY(0);
+        transform: rotateX(-90deg);
+        transform-origin: top;
+        // visibility: hidden;
+        // pointer-events: none;
+
+        &::-webkit-scrollbar
+        {
+            background-color: transparent;
+            width: 10px;
+            
+        }
+
+        &::-webkit-scrollbar-button
+        {
+            display: none;
+        }
+
+
+        &::-webkit-scrollbar-thumb
+        {
+            border-radius: 0 20px 20px 0;
+        }
+
+        &.dark-block::-webkit-scrollbar-thumb
+        {
+            background-color: gray;
+        }
+        &.light-list::-webkit-scrollbar-thumb
+        {
+            background-color: rgb(71, 147, 255);
+        }
+
+        &.active
+        {
+            // visibility: visible;
+            // pointer-events: all;
+            transform-origin: top;
+            // transform: scaleY(1);
+            animation: open .9s ease;
+            transform: rotateX(0);
+
+            @keyframes open {
+                0% {transform: rotateX(50deg);}
+                25% {transform: rotateX(-35deg);}
+                50% {transform: rotateX(20deg);}
+                75% {transform: rotateX(-10deg);}
+                100% {transform: rotateX(0);}
+            }
+        }
+
+        li
+        {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+           
+        }
+
+        &.light-list
+        {
+            li:hover
+            {
+                background-color: rgba(171, 206, 255);
+            }
+        }
+
+        &.dark-block
+        {
+            li:hover
+            {
+                background-color: #8f8d8d;
+            }
+        }
+    }
+}
