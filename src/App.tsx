@@ -1,48 +1,62 @@
 import React, { useEffect } from 'react';
-import { Header, SectionLoading, SectionStatistic, SectionWeather } from './components';
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import { getWeather } from './store/weatherSlice/weatherSlice';
-import "./styles/app.scss";
+import { useAppSelector } from './store/hooks';
+import { 
+    Header, 
+    SectionIntro , 
+    SectionStart, 
+    SectionSpend, 
+    SectionTeach, 
+    SectionReconnect,
+    SectionTake,
+    SectionFeature,
+    SectionVideo,
+    SectionExperience,
+    SectionApp,
+    SectionHomeDevice,
+    SectionGetStarted,
+    SectionComments,
+    SectionWhyAro,
+    SectionSmart,
+    SectionLife,
+    SectionAbout,
+    Footer
+ } from "./components";
 
 const App: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const { mode } = useAppSelector(state => state.mode);
-    const { weather, loading } = useAppSelector(state => state.weather);
-    const dataCity = useAppSelector(state => state.city);
+    const { langEN } = useAppSelector(state => state.lang)
 
-    console.log(weather);
-    
-    
     useEffect(() => {
-        if (dataCity) {
-            dispatch(getWeather(dataCity));
+        localStorage.setItem("lang", `${langEN}`)
+        if (langEN) {
+            document.title = "Aro | A little less phone. Way more life."
+        }else {
+            document.title = "Aro | Чуть меньше телефона. Намного больше жизни."
         }
-    }, [dispatch, dataCity]);
-
-    useEffect(() => {
-        if (mode) {
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-        } else {
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
-        }
-    }, [mode]);
-
-    useEffect(() => {
-        localStorage.setItem("mode", `${mode}`)
         return () => {
-            localStorage.setItem("mode", `${mode}`)
+            localStorage.setItem("lang", `${langEN}`)
         }
-    }, [mode]);
-
-    if(loading === "pending") return <SectionLoading />
-    
+    }, [langEN])
     return (
         <div className="app">
             <Header />
-            <SectionWeather />
-            <SectionStatistic />
+            <SectionStart />
+            <SectionIntro />
+            <SectionSpend />
+            <SectionTeach />
+            <SectionReconnect />
+            <SectionTake />
+            <SectionFeature />
+            <SectionVideo />
+            <SectionExperience />
+            <SectionApp />
+            <SectionHomeDevice />
+            <SectionGetStarted />
+            <SectionComments />
+            <SectionWhyAro />
+            <SectionSmart />
+            <SectionLife />
+            <SectionAbout />
+            <Footer />
         </div>
     )
 }

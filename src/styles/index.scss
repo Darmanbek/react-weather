@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 *,
-*::before,
-*::after
+*::after,
+*::before
 {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    outline: none;
+    box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    outline: none;
 }
 
 img
@@ -19,14 +19,17 @@ img
     display: inline-block;
 }
 
-a,
+a, 
 span,
 button 
 {
+    color: #000;
     display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    background: none;
+    text-decoration: none;
+    outline: none;
     border: none;
-    background: transparent;
-    font-family: 'Montserrat', sans-serif;
 }
 
 ul,
@@ -38,19 +41,8 @@ li
 
 body
 {
-    font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
-    transition: background .3s;
-
-    &.light
-    {
-        background-color: #fff;
-    }
-
-    &.dark
-    {
-        background-color: #222;
-    }
+    font-family: 'Roboto', sans-serif;
 }
 
 .container
@@ -61,35 +53,52 @@ body
     padding: 0 20px;
 }
 
-.light-block
+.aro-button
 {
-    background: #fff;
-    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, .25);
+    cursor: pointer;
+    color: #24160B;
+    background-color: #EFAE35;
+    padding: 15px 32px;
+    border-radius: 32px;
+    text-transform: capitalize;
+
+    &:active
+    {
+        filter: brightness(1.2);
+    }
+
+    &:hover
+    {
+        outline: 1px solid #24160B;
+    }
+}
+
+.aro-link
+{
+    font-size: 17px;
+    text-transform: capitalize;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 6px 0;
+ 
+
+    &:hover
+    {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    }
+}
+
+.aro-extra-link
+{
     color: #000;
-}
+    text-transform: capitalize;
+    font-size: 17px;
+    font-weight: 400;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    transition: background 0.3s;
 
-.dark-block
-{
-    background-color: #4F4F4F;
-    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, .25);
-    color: #fff;
-}
-
-.light-list
-{
-    background-color: rgba(71, 147, 255, .2);
-    color: #000;
-}
-
-.dark-list
-{
-    background-color: #2E3035;
-    color: #fff;
-}
-
-.flex-center
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    &:hover
+    {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
 }

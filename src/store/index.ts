@@ -1,15 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import weather from "./weatherSlice/weatherSlice";
-import mode from "./modeSlice/modeSlice";
-import city from "./citySlice/citySlice";
+import lang from "./langSlice/langSlice";
 
 const store = configureStore({
     reducer: {
-        weather,
-        mode,
-        city
+        lang
     }
-});
+})
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
