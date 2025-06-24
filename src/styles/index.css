@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.animation-duration-500 {
+		animation-duration: 500ms;
+	}
+
+	.animation-duration-1000 {
+		animation-duration: 1s;
+	}
+
+	.animation-duration-5000 {
+		animation-duration: 5s;
+	}
+
+	.scrollbar-primary {
+		scrollbar-color: var(--primary) transparent;
+	}
+
+	.scrollbar-card {
+		scrollbar-color: var(--foreground) transparent;
+	}
+
+	.scrollbar-thin {
+		scrollbar-width: thin;
+	}
+
+	.rotate-x-90 {
+		transform: rotateX(90deg);
+	}
+
+	.-rotate-x-90 {
+		transform: rotateX(-90deg);
+	}
+}
+
+@layer base {
+	:root {
+		--ant-font-family: "Montserrat", sans-serif;
+
+		--background: #FFFFFF;
+		--foreground: #000000;
+		--primary: #4793FF;
+		--secondary: #4793FF33;
+		--secondary-hover: #ABCEFF;
+		--tertiary: #939CB0;
+		--card: #FFFFFF;
+
+		--shadow-container: 2px 5px 25px -3px #B4B4B440;
+		--shadow-icon: 1px 4px 10px -1px #4793FF33;
+		--shadow-secondary: 0px 3px 20px 0px #93909047;
+
+	}
+
+	.dark {
+		--background: #222;
+		--foreground: #FFFFFF;
+		--secondary: #2E3035;
+		--secondary-hover: #8F8D8D;
+		--card: #4F4F4F;
+	}
+}
+
+@layer base {
+	*,
+	*:before,
+	*:after {
+		scrollbar-width: thin;
+	}
+
+	body {
+		@apply font-montserrat bg-background text-foreground transition-colors;
+	}
+}
