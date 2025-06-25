@@ -1,9 +1,30 @@
-import { type FC } from "react"
+import { type FC, useMemo } from "react"
 import { SunIcon } from "src/assets"
 import { Card } from "src/components/ui"
+import { useCityStore } from "src/store"
 import { DayTime } from "./day-time.tsx"
 
 const Day: FC = () => {
+	const city = useCityStore((state) => state.city)
+	const date = useMemo(() => Date.now(), [])
+
+	// const {
+	// 	data: weather,
+	// 	error,
+	// 	isError,
+	// 	isLoading,
+	// } = useGetWeatherQuery({
+	// 	slug: city.name,
+	// 	dt: date,
+	// })
+
+	// console.log({
+	// 	weather,
+	// 	error,
+	// 	isError,
+	// 	isLoading,
+	// 	status,
+	// })
 	return (
 		<>
 			<Card>
@@ -30,7 +51,7 @@ const Day: FC = () => {
 							Время: <DayTime />
 						</p>
 						<p className={"text-tertiary text-lg lg:text-xl xl:text-2xl mt-1 lg:mt-2 xl:mt-3"}>
-							Город: Санкт-Петербург
+							Город: {city?.name || "Город не выбран"}
 						</p>
 					</div>
 				</div>

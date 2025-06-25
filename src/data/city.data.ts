@@ -1,4 +1,6 @@
-export const cityData = [
+import type { City } from "src/types"
+
+export const cityData: City[] = [
 	{
 		id: 0,
 		name: "Весь Узбекистан",

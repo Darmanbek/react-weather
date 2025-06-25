@@ -1,10 +1,16 @@
-import { type FC } from "react"
+import { type FC, useEffect } from "react"
+import { useThemePersistStore } from "src/store"
 
 const ThemeSwitch: FC = () => {
-	const toggleTheme = () => {
-		document.body.classList.toggle("dark")
-	}
+	const { theme, toggleTheme } = useThemePersistStore()
 
+	useEffect(() => {
+		if (theme === "dark") {
+			document.body.classList.add("dark")
+		} else {
+			document.body.classList.remove("dark")
+		}
+	}, [theme])
 	return (
 		<>
 			<button

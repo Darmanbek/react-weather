@@ -1,10 +1,12 @@
 import { type FC, useEffect, useRef, useState } from "react"
 import { FaChevronDown } from "react-icons/fa"
+import { cityData } from "src/data"
 import { twx } from "src/lib/utils.tsx"
-import { cityData } from "./city.data.ts"
+import { useCityStore } from "src/store"
 
 const CitySelect: FC = () => {
 	const [open, setOpen] = useState(false)
+	const { city, setCity } = useCityStore()
 	const listRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
@@ -28,11 +30,11 @@ const CitySelect: FC = () => {
 			>
 				<button
 					className={
-						"inline-flex items-center gap-3 bg-secondary py-2 px-5 rounded-xl text-ellipsis overflow-hidden whitespace-nowrap text-sm md:text-base dark:bg-card dark:shadow-container"
+						"inline-flex items-center gap-3 bg-secondary py-2 px-5 rounded-xl text-ellipsis overflow-hidden whitespace-nowrap text-sm md:text-base dark:bg-card dark:shadow-container min-w-52"
 					}
 					onClick={() => setOpen((prev) => !prev)}
 				>
-					<span>Выбрать город</span>
+					<span className={"w-full"}>{city?.name || "Выбрать город"}</span>
 					<FaChevronDown
 						className={twx("transform transition-transform", {
 							"rotate-180": open,
@@ -42,7 +44,7 @@ const CitySelect: FC = () => {
 				</button>
 				<div
 					className={twx(
-						"absolute top-full mt-1 left-0 right-0 bg-secondary rounded-xl dark:bg-card dark:shadow-container overflow-hidden origin-top transition-transform",
+						"absolute min-w-48 w-full top-full mt-1 right-0 bg-secondary rounded-xl dark:bg-card dark:shadow-container overflow-hidden origin-top transition-transform",
 						{
 							"animate-open rotate-0": open,
 							"rotate-x-90": !open,
@@ -60,6 +62,10 @@ const CitySelect: FC = () => {
 									className={
 										"cursor-pointer text-base font-medium px-5 py-2 hover:bg-secondary-hover transition-colors"
 									}
+									onClick={() => {
+										setCity(city)
+										setOpen(false)
+									}}
 									key={index}
 								>
 									{city.name}
