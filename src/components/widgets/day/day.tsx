@@ -15,7 +15,7 @@ const Day: FC = () => {
 		isError,
 		isLoading,
 	} = useGetWeatherQuery({
-		slug: city.name,
+		q: city.slug,
 		dt: date,
 	})
 
@@ -32,7 +32,7 @@ const Day: FC = () => {
 					<div className={"flex justify-between items-center"}>
 						<div>
 							<h1 className={"text-primary font-medium text-6xl lg:text-7xl xl:text-8xl le"}>
-								20°
+								{Math.round((Number(weather?.list?.[0]?.main?.temp) || 273.15) - 273.15)}°
 							</h1>
 							<p className={"text-2xl lg:text-3xl xl:text-4xl"}>Сегодня</p>
 						</div>

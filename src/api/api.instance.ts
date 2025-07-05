@@ -14,8 +14,8 @@ class Api {
 	private async fetch<T>(url: string, config: ApiConfig): Promise<{ data: T }> {
 		const searchParams = {
 			appid: WEATHER_API,
-			uz: CITY_CODE,
 			lang: LANG,
+			q: `${config.params?.q},${CITY_CODE}`,
 			...config.params,
 		}
 
