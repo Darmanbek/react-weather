@@ -1,6 +1,7 @@
 import { type FC, useMemo } from "react"
 import { SunIcon } from "src/assets"
 import { Card } from "src/components/ui"
+import { useGetWeatherQuery } from "src/services/weather"
 import { useCityStore } from "src/store"
 import { DayTime } from "./day-time.tsx"
 
@@ -8,23 +9,22 @@ const Day: FC = () => {
 	const city = useCityStore((state) => state.city)
 	const date = useMemo(() => Date.now(), [])
 
-	// const {
-	// 	data: weather,
-	// 	error,
-	// 	isError,
-	// 	isLoading,
-	// } = useGetWeatherQuery({
-	// 	slug: city.name,
-	// 	dt: date,
-	// })
+	const {
+		data: weather,
+		error,
+		isError,
+		isLoading,
+	} = useGetWeatherQuery({
+		slug: city.name,
+		dt: date,
+	})
 
-	// console.log({
-	// 	weather,
-	// 	error,
-	// 	isError,
-	// 	isLoading,
-	// 	status,
-	// })
+	console.log({
+		weather,
+		error,
+		isError,
+		isLoading,
+	})
 	return (
 		<>
 			<Card>

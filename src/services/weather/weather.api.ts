@@ -22,7 +22,7 @@ const useGetWeatherQuery = (params: Record<string, unknown> = {}) => {
 			.finally(() => {
 				setIsLoading(false)
 			})
-	}, [params])
+	}, [])
 
 	return {
 		data,
