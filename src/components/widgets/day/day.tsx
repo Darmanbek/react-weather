@@ -20,6 +20,7 @@ const Day: FC = () => {
 		dt: date,
 	})
 
+	// eslint-disable-next-line no-console
 	console.log({
 		weather,
 		error,

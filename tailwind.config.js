@@ -39,10 +39,20 @@ export default {
 					"75%": { transform: "rotateX(-10deg)" },
 					"100%": { transform: "rotateX(0)" },
 				},
+				show: {
+					"0%": { opacity: 0 },
+					"100%": { opacity: 1 },
+				},
+				hidden: {
+					"0%": { opacity: 1 },
+					"100%": { opacity: 0, display: "none" },
+				},
 			},
 			animation: {
 				breathe: "breathe 3s ease-in-out infinite",
 				open: "open .9s ease",
+				show: "show .5s ease",
+				hidden: "hidden .5s ease",
 			},
 		},
 	},

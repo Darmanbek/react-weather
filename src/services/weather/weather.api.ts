@@ -28,6 +28,7 @@ const useGetWeatherQuery = (params: Record<string, unknown> = {}) => {
 			})
 			.catch((error) => {
 				cache.clear()
+				setData(undefined)
 				setIsError(true)
 				setError(error)
 			})
