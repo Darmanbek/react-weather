@@ -12,6 +12,7 @@ const useGetWeatherQuery = (params: Record<string, unknown> = {}) => {
 
 	const queryKey = useMemo(
 		() => ["weather", ...Object.values(params)].join(", "),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[...Object.values(params)]
 	)
 
@@ -21,9 +22,12 @@ const useGetWeatherQuery = (params: Record<string, unknown> = {}) => {
 			.get(params)
 			.then((result) => {
 				cache.set(queryKey, result)
+				setIsError(false)
+				setError(null)
 				setData(result)
 			})
 			.catch((error) => {
+				cache.clear()
 				setIsError(true)
 				setError(error)
 			})

@@ -16,6 +16,7 @@ const Day: FC = () => {
 		isLoading,
 	} = useGetWeatherQuery({
 		q: city.slug,
+		cnt: 1,
 		dt: date,
 	})
 
